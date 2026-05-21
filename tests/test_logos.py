@@ -1,30 +1,18 @@
 import pytest
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.order_page import OrderPage
-from constants import BASE_URL
 
 class TestLogos:
-    def test_scooter_logo_redirect(self, driver):
-        driver.get(BASE_URL)
-        page = OrderPage(driver)
+    def test_scooter_logo_redirect(self, driver, base_url):
+        page = OrderPage(driver, base_url)
+        page._open(base_url)
         page.click_logo_scooter()
-        assert page.get_current_url() == BASE_URL
+        assert page.get_current_url() == base_url
 
-    def test_yandex_logo_redirect(self, driver):
-        driver.get(BASE_URL)
-        page = OrderPage(driver)
-        main_window = driver.current_window_handle
+    def test_yandex_logo_redirect(self, driver, base_url):
+        page = OrderPage(driver, base_url)
+        page._open(base_url)
+        main_window = page._get_current_window()
         page.click_logo_yandex()
-        WebDriverWait(driver, 10).until(
-            EC.number_of_windows_to_be(2)
-        )
-        for window in driver.window_handles:
-            if window != main_window:
-                driver.switch_to.window(window)
-                break
-        WebDriverWait(driver, 10).until(
-            EC.url_contains("dzen.ru")
-        )
         assert "dzen.ru" in page.get_current_url()
-        driver.switch_to.window(main_window)
+        page._switch_to_window(main_window)
+        

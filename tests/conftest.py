@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
+from constants import BASE_URL
 
 @pytest.fixture(scope="function")
 def driver():
@@ -13,4 +14,7 @@ def driver():
         browser.quit()
     except Exception:
         pass
-    
+
+@pytest.fixture(scope="function")
+def base_url():
+    return BASE_URL
