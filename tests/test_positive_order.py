@@ -1,5 +1,6 @@
 import pytest
 import allure
+from constants import BASE_URL
 from pages.order_page import OrderPage
 
 class TestPositiveOrder:
@@ -9,9 +10,9 @@ class TestPositiveOrder:
     ])
     @allure.feature("Заказ самоката")
     @allure.title("Заказ через кнопку вверху страницы")
-    def test_order_from_top(self, driver, base_url, name, surname, address, metro, phone):
-        page = OrderPage(driver, base_url)
-        page._open(base_url)
+    def test_order_from_top(self, driver, name, surname, address, metro, phone):
+        page = OrderPage(driver, BASE_URL)
+        page._open(BASE_URL)
         page.click_order_button_top()
         page.fill_name(name)
         page.fill_surname(surname)
@@ -31,9 +32,9 @@ class TestPositiveOrder:
     ])
     @allure.feature("Заказ самоката")
     @allure.title("Заказ через кнопку внизу страницы")
-    def test_order_from_bottom(self, driver, base_url, name, surname, address, metro, phone):
-        page = OrderPage(driver, base_url)
-        page._open(base_url)
+    def test_order_from_bottom(self, driver, name, surname, address, metro, phone):
+        page = OrderPage(driver, BASE_URL)
+        page._open(BASE_URL)
         page.click_order_button_bottom()
         page.fill_name(name)
         page.fill_surname(surname)

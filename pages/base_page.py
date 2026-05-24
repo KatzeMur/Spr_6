@@ -6,6 +6,9 @@ class BasePage:
         self.driver = driver
         self.url = url
 
+    def _find_element(self, locator):
+        return self.driver.find_element(*locator)
+
     def _scroll_to_element(self, locator):
         element = self.driver.find_element(*locator)
         self._execute_script("arguments[0].scrollIntoView();", element)
@@ -48,6 +51,6 @@ class BasePage:
         return WebDriverWait(self.driver, timeout).until(EC.url_contains(text))
 
     def _open(self, url):
-        """Открывает страницу по указанному URL"""
         self.driver.get(url)
+        
         

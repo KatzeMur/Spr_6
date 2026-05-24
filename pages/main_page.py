@@ -44,33 +44,33 @@ class MainPage(BasePage):
 
     def get_answer_text_1(self):
         self._wait_element_visible(MAIN_ANSWER_1)
-        return self.driver.find_element(*MAIN_ANSWER_1).text
+        return self._get_element_text(MAIN_ANSWER_1)
 
     def get_answer_text_2(self):
         self._wait_element_visible(MAIN_ANSWER_2)
-        return self.driver.find_element(*MAIN_ANSWER_2).text
+        return self._get_element_text(MAIN_ANSWER_2)
 
     def get_answer_text_3(self):
         self._wait_element_visible(MAIN_ANSWER_3)
-        return self.driver.find_element(*MAIN_ANSWER_3).text
+        return self._get_element_text(MAIN_ANSWER_3)
 
     def get_answer_text_4(self):
         self._wait_element_visible(MAIN_ANSWER_4)
-        return self.driver.find_element(*MAIN_ANSWER_4).text
+        return self._get_element_text(MAIN_ANSWER_4)
 
     def get_answer_text_5(self):
         self._wait_element_visible(MAIN_ANSWER_5)
-        return self.driver.find_element(*MAIN_ANSWER_5).text
+        return self._get_element_text(MAIN_ANSWER_5)
 
     def get_answer_text_6(self):
         self._wait_element_visible(MAIN_ANSWER_6)
-        return self.driver.find_element(*MAIN_ANSWER_6).text
+        return self._get_element_text(MAIN_ANSWER_6)
 
     def get_answer_text_7(self):
         self._wait_element_visible(MAIN_ANSWER_7)
-        return self.driver.find_element(*MAIN_ANSWER_7).text
+        return self._get_element_text(MAIN_ANSWER_7)
 
     def get_answer_text_8(self):
         self._wait_element_visible(MAIN_ANSWER_8)
-        return self.driver.find_element(*MAIN_ANSWER_8).text
+        return self._get_element_text(MAIN_ANSWER_8)
     

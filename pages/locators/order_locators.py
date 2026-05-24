@@ -21,3 +21,7 @@ ORDER_MODAL_SUCCESS_TEXT = (By.CSS_SELECTOR, "div.Order_Text__2broi")
 
 ORDER_LOGO_SCOOTER = (By.CSS_SELECTOR, "a.Header_LogoScooter__3lsAR")
 ORDER_LOGO_YANDEX = (By.CSS_SELECTOR, "a.Header_LogoYandex__3TSOI")
+
+DROPDOWN_OPTION = (By.CSS_SELECTOR, "button.select-search__option")
+RENTAL_PERIOD_OPTION = (By.CSS_SELECTOR, "div.Dropdown-option")
+DATE_PICKER_DAY = (By.CSS_SELECTOR, "div.react-datepicker__day[aria-disabled='false']")

@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import re
 from pages.locators.order_locators import (
@@ -8,7 +7,8 @@ from pages.locators.order_locators import (
     ORDER_DROPDOWN_RENTAL_PERIOD, ORDER_INPUT_DATE, ORDER_BUTTON_ORDER_FINAL,
     ORDER_MODAL_CONFIRM, ORDER_BUTTON_MODAL_YES,
     ORDER_MODAL_SUCCESS, ORDER_MODAL_SUCCESS_TEXT,
-    ORDER_LOGO_SCOOTER, ORDER_LOGO_YANDEX
+    ORDER_LOGO_SCOOTER, ORDER_LOGO_YANDEX,
+    DROPDOWN_OPTION, RENTAL_PERIOD_OPTION, DATE_PICKER_DAY
 )
 from pages.base_page import BasePage
 
@@ -50,8 +50,8 @@ class OrderPage(BasePage):
         field = self._wait_element_clickable(ORDER_INPUT_METRO)
         field.clear()
         field.send_keys(text)
-        dropdown_option = (By.CSS_SELECTOR, "button.select-search__option")
-        self._wait_element_clickable(dropdown_option).click()
+        dropdown_option = self._wait_element_clickable(DROPDOWN_OPTION)
+        dropdown_option.click()
 
     def fill_phone(self, text):
         field = self._wait_element_clickable(ORDER_INPUT_PHONE)
@@ -60,13 +60,13 @@ class OrderPage(BasePage):
 
     def select_rental_period(self):
         self._wait_element_clickable(ORDER_DROPDOWN_RENTAL_PERIOD).click()
-        option = self._wait_element_clickable((By.CSS_SELECTOR, "div.Dropdown-option"))
+        option = self._wait_element_clickable(RENTAL_PERIOD_OPTION)
         option.click()
 
     def select_date(self):
         self._js_click(ORDER_INPUT_DATE)
-        day = (By.CSS_SELECTOR, "div.react-datepicker__day[aria-disabled='false']")
-        self._wait_element_clickable(day).click()
+        day = self._wait_element_clickable(DATE_PICKER_DAY)
+        day.click()
 
     def click_order_final_button(self):
         self._js_click(ORDER_BUTTON_ORDER_FINAL)
@@ -97,3 +97,4 @@ class OrderPage(BasePage):
 
     def switch_to_main_window(self):
         self._switch_to_window(self._get_window_handles()[0])
+        
